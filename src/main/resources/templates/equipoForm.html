@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Plantilla de Jugadores</title>
+
+    <style>
+
+        table, th, td {
+        border: 1px solid black;
+        }
+
+        body {
+           font-size: 135%;
+        }
+
+      ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #0202AA;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 40px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #5C5CF4;
+        }
+
+
+        .buttonLogOut{
+        background-color: #3BBEFB;
+        border: none;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        left: 1365px;
+        }
+
+        .ima{
+        border:none !important;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        }
+
+        a {
+              color: mediumblue;
+           }
+
+
+        table.gridtable {
+            font-family: verdana,arial,sans-serif;
+            font-size: 80%;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        table.gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+
+        input[type=text], [type=date], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .myButton {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .myButton:hover {
+            background-color: #45a049;
+        }
+
+        div.mydiv{
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 5px;
+            position: absolute;
+          top: 300px;
+          left: 300px;
+          width: 900px;
+          height: 800px;
+        }
+
+
+        label{
+            font-weight: bold;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<div>
+    <center>
+        <h2>Modo Administrador</h2>
+    </center>
+    <button style="float:right" class="buttonLogOut"
+            type="button">Cerrar sesión</button>
+
+</div>
+
+
+<div id="header">
+    <ul >
+
+        <li><a  th:href="@{'/'}"> </a>
+        </li>
+        <li><a  th:href="@{'/'}"> </a>
+        </li>
+        <li><a  th:href="@{'/'}"></a>
+        </li>
+        <li><a  th:href="@{'/'}">Inicio</a>
+        </li>
+        <li><a  th:href="@{'/'}">Partidos</a>
+        </li>
+        <li><a  th:href="@{'/'}">Noticias</a>
+        </li>
+        <li><a  th:href="@{'/futbolistas'}">Plantilla de Jugadores</a>
+        </li>
+        <li><a  th:href="@{'/equipo/1'}">Acerca de Real Cochabamba CF</a>
+        </li>
+
+    </ul>
+</div>
+
+
+<div>
+    <p><img th:src="@{https://upload.wikimedia.org/wikipedia/commons/0/09/Club_Atletico_Tucuman_Escudo.jpg}"
+            src="${https://upload.wikimedia.org/wikipedia/commons/0/09/Club_Atletico_Tucuman_Escudo.jpg}" width="250" height="250" class="ima"/></p>
+</div>
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+
+<div class="mydiv">
+
+    <h2>Datos Generales</h2>
+    <div>
+        <form class="form-horizontal" th:object="${equipo}" th:action="@{/equipo}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{nombre}"/>
+                    <td th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Apodo:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{apodo}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha de Fundacion:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" th:field="*{fundacion}"/>
+                    <td th:if="${#fields.hasErrors('fundacion')}" th:errors="*{fundacion}">Name Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Presidente:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{presidente}"/>
+                    <td th:if="${#fields.hasErrors('presidente')}" th:errors="*{presidente}">Name Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Entrenador:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{entrenador}"/>
+                    <td th:if="${#fields.hasErrors('entrenador')}" th:errors="*{entrenador}">Name Error</td>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Estadio:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{estadio}"/>
+                    <td th:if="${#fields.hasErrors('estadio')}" th:errors="*{estadio}">Name Error</td>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="myButton">Guardar</button>
+            </div>
+        </form>
+
+
+        <p><a th:href="@{'/equipo/' + ${equipo.id}}">Cancelar</a></p>
+
+    </div>
+</div>
+
+</body>
+</html>

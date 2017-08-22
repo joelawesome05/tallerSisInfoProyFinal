@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Plantilla de Jugadores</title>
+
+    <style>
+
+        table, th, td {
+        border: 1px solid black;
+        }
+
+        body {
+           font-size: 135%;
+        }
+
+      ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #0202AA;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 40px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #5C5CF4;
+        }
+
+
+        .buttonLogOut{
+        background-color: #3BBEFB;
+        border: none;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        left: 1365px;
+        }
+
+        .ima{
+        border:none !important;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        }
+
+        a {
+              color: mediumblue;
+           }
+
+
+        table.gridtable {
+            font-family: verdana,arial,sans-serif;
+            font-size: 80%;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        table.gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+
+        input[type=text], [type=date], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .myButton {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .myButton:hover {
+            background-color: #45a049;
+        }
+
+        div.mydiv{
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 5px;
+            position: absolute;
+          top: 300px;
+          left: 300px;
+          width: 900px;
+          height: 1000px;
+        }
+
+
+        label{
+            font-weight: bold;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<div>
+    <center>
+        <h2>Modo Administrador</h2>
+    </center>
+    <button style="float:right" class="buttonLogOut"
+            type="button">Cerrar sesión</button>
+
+</div>
+
+
+<div id="header">
+    <ul >
+
+        <li><a  th:href="@{'/'}"> </a>
+        </li>
+        <li><a  th:href="@{'/'}"> </a>
+        </li>
+        <li><a  th:href="@{'/'}"></a>
+        </li>
+        <li><a  th:href="@{'/'}">Inicio</a>
+        </li>
+        <li><a  th:href="@{'/'}">Partidos</a>
+        </li>
+        <li><a  th:href="@{'/'}">Noticias</a>
+        </li>
+        <li><a  th:href="@{'/futbolistas'}">Plantilla de Jugadores</a>
+        </li>
+        <li><a  th:href="@{'/equipo/1'}">Acerca de Real Cochabamba CF</a>
+        </li>
+
+    </ul>
+</div>
+
+
+<div>
+    <p><img th:src="@{https://upload.wikimedia.org/wikipedia/commons/0/09/Club_Atletico_Tucuman_Escudo.jpg}"
+            src="${https://upload.wikimedia.org/wikipedia/commons/0/09/Club_Atletico_Tucuman_Escudo.jpg}" width="250" height="250" class="ima"/></p>
+</div>
+
+<br/><br/>
+
+
+<center>
+<div class="container">
+
+    <h2>Datos generales del equipo de futbol Real Cochabamba CF</h2>
+    <div>
+        <p><a th:href="@{'/equipo/edit/' + ${equipo.id}}">Editar Datos</a></p>
+
+        <table class="gridtable">
+            <tr>
+                <th>Nombre</th>
+                <td th:text="${equipo.nombre}"></td>
+            </tr>
+            <tr>
+                <th>Apodo</th>
+                <td th:text="${equipo.apodo}"></td>
+            </tr>
+            <tr>
+                <th>Fecha de Fundación</th>
+                <td th:text="${fecha}"></td>
+            </tr>
+            <tr>
+                <th>Presidente</th>
+                <td th:text="${equipo.presidente}"></td>
+            </tr>
+            <tr>
+                <th>Entrenador</th>
+                <td th:text="${equipo.entrenador}"></td>
+            </tr>
+            <tr>
+                <th>Estadio</th>
+                <td th:text="${equipo.estadio}"></td>
+            </tr>
+
+        </table>
+
+
+
+
+    </div>
+
+</div>
+</center>
+</body>
+</html>
